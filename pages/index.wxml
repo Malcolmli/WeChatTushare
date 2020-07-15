@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <view class="buttonindex">
+    <a class="weui-btn weui-btn_primary" bindtap="open">点击一下</a>
+  </view>
+  <view wx:if="{{gallery}}" class="weui-gallery fadeIn" bindtap="close">
+    <view class="weui-gallery__img__wrp">
+      <image mode="aspectFit" class="weui-gallery__img" src="{{imgUrls}}"></image>
+    </view>
+  </view>
+</view>
