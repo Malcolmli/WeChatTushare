@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/index/index",
+    "pages/index",
     "pages/logs/logs"
   ],
   "window":{
@@ -10,5 +10,9 @@
     "navigationBarTextStyle":"black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  }
 }
