@@ -1,0 +1,3 @@
+.page__title_align {
+  text-align:right;
+}
