@@ -1,76 +1,48 @@
-//index.js
-//获取应用实例
-const app = getApp()
+const util = require('../utils/util.js')
 
 Page({
   data: {
-    date: getDate(),
-    userInfo: {},
-    hasUserInfo: false,
-    gallery: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    imgUrls: [
-      './images/20200715150449.jpg'
-    ]
+    datetime: '',
+    limit: '',
+    array: [],
+    resultshow: false,
+    accounts: ["OH", "OC", "LH", "LC"],
+    accountValues: ["oh", "oc", "lh", "lc"],
+    accountIndex: 0,
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
+  bindDateChange: function (e) {
+    this.setData({
+      datetime: e.detail.value
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+  formInputChange(e) {
+    this.setData({
+      limit: e.detail.value
+    })
+  },
+  bindAccountChange: function (e) {
+    this.setData({
+      accountIndex: e.detail.value
+    })
+  },
+  searchbtn: function (e) {
+    this.setData({
+      resultshow: true
+    })
+    var type = this.data.accountValues[this.data.accountIndex]
+    var date = util.getDate(new Date(this.data.datetime));
+    var limit = this.data.limit;
+    this.requestRange(type, date, limit);
+  },
+  requestRange: function (type, date, limit) {
+    var url = "http://www.malcolmli.cn:8050/range/" + type + "?date=" + date + "&limit=" + limit
+    console.log(url)
+    util.requestPromise(url)
+      .then(res => {
+        console.log(res.data.data)
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          array: res.data.data
         })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
       })
-    }
-  },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  close: function () {
-    this.setData({
-      gallery: false,
-    });
-  },
-  open: function () {
-    this.setData({
-      gallery: true
-    });
   }
 })
-
-function getDate() {
-  let date = new Date();
-  let Str = date.getFullYear() +
-    (date.getMonth() < 9 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) +
-    (date.getDate() < 10 ? "0" + date.getDate() : date.getDate())
-  return Str;
-}

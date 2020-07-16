@@ -1,20 +1,40 @@
-// pages/component/lh/lh.js
+// pages/component/detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    data: {
-      array: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
-    },
+    name: "",
+    tsCode: "",
+    tsName: "",
+    netBuy: "",
+    count15: "",
+    win15To23: "",
+    win15To24: "",
+    count30: "",
+    win30To23: "",
+    win30To24: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.object)
+    this.setData({
+      name: options.name,
+      tsCode: options.tsCode,
+      tsName: options.tsName,
+      netBuy: options.netBuy,
+      count15: options.count15,
+      win15To23: options.win15To23,
+      win15To24: options.win15To24,
+      count30: options.count30,
+      win30To23: options.win30To23,
+      win30To24: options.win30To24,
+    })
+    console.log(this.data.win15To23)
   },
 
   /**

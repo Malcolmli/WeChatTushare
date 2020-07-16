@@ -1,4 +1,7 @@
 /**index.wxss**/
-.page__title_align {
-  text-align:right;
+.search-btn{
+  margin-top: 20px;
+}
+.weui-cells{
+  margin-top: 20px;
 }
