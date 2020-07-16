@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: '今天天气不错！',
+    date: getDate(),
     userInfo: {},
     hasUserInfo: false,
     gallery: false,
@@ -66,3 +66,11 @@ Page({
     });
   }
 })
+
+function getDate() {
+  let date = new Date();
+  let Str = date.getFullYear() +
+    (date.getMonth() < 9 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) +
+    (date.getDate() < 10 ? "0" + date.getDate() : date.getDate())
+  return Str;
+}

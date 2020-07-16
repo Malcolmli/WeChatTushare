@@ -1,21 +1,27 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="page__hd">
+    <view class="page__title page__title_align">{{date}}</view>
+    <view class="page__desc page__title_align">列表</view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-  <view class="buttonindex">
-    <a class="weui-btn weui-btn_primary" bindtap="open">点击一下</a>
-  </view>
-  <view wx:if="{{gallery}}" class="weui-gallery fadeIn" bindtap="close">
-    <view class="weui-gallery__img__wrp">
-      <image mode="aspectFit" class="weui-gallery__img" src="{{imgUrls}}"></image>
+  <view class="page__bd">
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="./component/oc/oc" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">OC</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="./component/oh/oh" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">OH</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="./component/lc/lc" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">LC</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="./component/lh/lh" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">LH</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
     </view>
   </view>
 </view>

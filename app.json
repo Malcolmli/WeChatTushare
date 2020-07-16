@@ -1,6 +1,10 @@
 {
   "pages":[
     "pages/index",
+    "pages/component/oc/oc",
+    "pages/component/oh/oh",
+    "pages/component/lc/lc",
+    "pages/component/lh/lh",
     "pages/logs/logs"
   ],
   "window":{
