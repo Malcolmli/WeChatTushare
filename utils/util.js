@@ -37,6 +37,14 @@ const getDate = date => {
   return Str;
 }
 
+const getDateTime = () => {
+  var date = new Date();
+  var Str = date.getFullYear() + "-" +
+    (date.getMonth() < 9 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + "-" +
+    (date.getDate() < 10 ? "0" + date.getDate() : date.getDate())
+  return Str;
+}
+
 const requestRange = (type, date, limit) => {
   var url = "http://www.malcolmli.cn:8050/range/" + type + "?date=" + date + "&limit=" + limit
   console.log(url)
@@ -52,6 +60,7 @@ const requestRange = (type, date, limit) => {
 module.exports = {
   formatTime: formatTime,
   getDate: getDate,
+  getDateTime: getDateTime,
   requestPromise: requestPromise,
   requestRange: requestRange,
 }
