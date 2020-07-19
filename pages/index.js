@@ -5,9 +5,15 @@ Page({
     dateValue: util.getDateTime(),
     array: [],
     resultshow: false,
-    accounts: ["OH", "OC", "LH", "LC"],
-    accountValues: ["oh", "oc", "lh", "lc"],
-    accountIndex: 0,
+
+    serachType: ["均幅", "胜率"],
+    serachTypeValues: ["range", "ratio"],
+    serachTypeIndex: 0,
+
+    serachTarge: ["OH", "OC", "LH", "LC"],
+    serachTargeValues: ["oh", "oc", "lh", "lc"],
+    serachTargeIndex: 0,
+
     rules: [{
       name: 'limit',
       rules: {
@@ -32,9 +38,14 @@ Page({
       [`formData.${field}`]: e.detail.value,
     })
   },
-  bindAccountChange: function (e) {
+  bindTypeChange: function (e) {
     this.setData({
-      accountIndex: e.detail.value
+      serachTypeIndex: e.detail.value
+    })
+  },
+  bindTargeChange: function (e) {
+    this.setData({
+      serachTargeIndex: e.detail.value
     })
   },
   searchbtn: function (e) {
@@ -52,15 +63,16 @@ Page({
         this.setData({
           resultshow: true
         })
-        var type = this.data.accountValues[this.data.accountIndex]
+        var type = this.data.serachTypeValues[this.data.serachTypeIndex]
+        var targe = this.data.serachTargeValues[this.data.serachTargeIndex]
         var date = util.getDate(new Date(this.data.dateValue));
         var limit = this.data.formData.limit;
-        this.requestRange(type, date, limit);
+        this.requestRange(type, targe, date, limit);
       }
     })
   },
-  requestRange: function (type, date, limit) {
-    var url = "http://www.malcolmli.cn:8050/range/" + type + "?date=" + date + "&limit=" + limit
+  requestRange: function (type, targe, date, limit) {
+    var url = "https://www.malcolmli.cn:8050/" + type + "/" + targe + "?date=" + date + "&limit=" + limit
     console.log(url)
     util.requestPromise(url)
       .then(res => {

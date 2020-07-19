@@ -1,23 +1,16 @@
 <view class="page" data-weui-theme="{{theme}}">
   <view class="page__hd">
-    <view class="page__title">Detail</view>
-    <view class="page__desc">详细信息明细</view>
+    <view class="page__title">{{tsName}}</view>
+    <view class="page__desc">{{name}}</view>
   </view>
   <view class="page__bd">
     <view class="weui-form-preview">
       <view class="weui-form-preview__hd">
         <view class="weui-form-preview__item">
-          <em class="weui-form-preview__value">{{tsName}}</em>
+          <em class="weui-form-preview__value">{{tsCode}}</em>
         </view>
       </view>
       <view class="weui-form-preview__bd">
-        <view class="weui-form-preview__item">
-          <text class="weui-form-preview__value">{{name}}</text>
-        </view>
-        <view class="weui-form-preview__item">
-          <label class="weui-form-preview__label">代码</label>
-          <text class="weui-form-preview__value">{{tsCode}}</text>
-        </view>
         <view class="weui-form-preview__item">
           <label class="weui-form-preview__label">净量</label>
           <text class="weui-form-preview__value">{{netBuy}}</text>
