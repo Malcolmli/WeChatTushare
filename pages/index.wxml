@@ -23,10 +23,12 @@
                 </picker>
               </view>
             </view>
-            <mp-cell prop="limit" title="限制" ext-class="">
-              <input bindinput="formInputChange" data-field="limit" class="weui-input" type="digit"
-                placeholder="请输入数字" />
-            </mp-cell>
+            <view class="weui-cells weui-cells_after-title">
+              <mp-cell prop="limit" title="限制" ext-class="">
+                <input bindinput="formInputChange" data-field="limit" class="weui-input" type="digit"
+                  placeholder="请输入数字" />
+              </mp-cell>
+            </view>
             <mp-cell prop="date" title="日期" ext-class="">
               <picker data-field="date" mode="date" value="{{dateValue}}" start="2020-01-01"
                 bindchange="bindDateChange">
