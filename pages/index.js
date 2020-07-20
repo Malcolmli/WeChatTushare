@@ -3,8 +3,6 @@ const util = require('../utils/util.js')
 Page({
   data: {
     dateValue: util.getDateTime(),
-    array: [],
-    resultshow: false,
 
     serachType: ["均幅", "胜率"],
     serachTypeValues: ["range", "ratio"],
@@ -60,14 +58,14 @@ Page({
           })
         }
       } else {
-        this.setData({
-          resultshow: true
-        })
         var type = this.data.serachTypeValues[this.data.serachTypeIndex]
         var targe = this.data.serachTargeValues[this.data.serachTargeIndex]
         var date = util.getDate(new Date(this.data.dateValue));
         var limit = this.data.formData.limit;
         this.requestRange(type, targe, date, limit);
+        wx.navigateTo({
+          url: e.currentTarget.dataset.url
+        })
       }
     })
   },
@@ -76,15 +74,15 @@ Page({
     console.log(url)
     util.requestPromise(url)
       .then(res => {
-        console.log(res.data.data)
         if (res.data.errorMsg != null) {
           wx.showToast({
             title: res.data.errorMsg,
             icon: 'none',
           })
         } else {
-          this.setData({
-            array: res.data.data
+          wx.setStorageSync({
+            key: "listDate",
+            data: res.data.data
           })
         }
       })

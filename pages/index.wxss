@@ -2,6 +2,4 @@
 .search-btn{
   margin-top: 20px;
 }
-.weui-cells{
-  margin-top: 20px;
-}
+
