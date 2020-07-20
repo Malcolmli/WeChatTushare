@@ -8,7 +8,7 @@ Page({
     serachTypeValues: ["range", "ratio"],
     serachTypeIndex: 0,
 
-    serachTarge: ["OH", "OC", "LH", "LC"],
+    serachTarge: ["开高", "开闭", "低高", "低闭"],
     serachTargeValues: ["oh", "oc", "lh", "lc"],
     serachTargeIndex: 0,
 
@@ -63,9 +63,6 @@ Page({
         var date = util.getDate(new Date(this.data.dateValue));
         var limit = this.data.formData.limit;
         this.requestRange(type, targe, date, limit);
-        wx.navigateTo({
-          url: e.currentTarget.dataset.url
-        })
       }
     })
   },
@@ -83,6 +80,9 @@ Page({
           wx.setStorageSync({
             key: "listDate",
             data: res.data.data
+          })
+          wx.navigateTo({
+            url: "list/list"
           })
         }
       })
