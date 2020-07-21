@@ -77,7 +77,8 @@ Page({
             icon: 'none',
           })
         } else {
-          wx.setStorageSync({
+          console.log(res.data.data)
+          wx.setStorage({
             key: "listDate",
             data: res.data.data
           })
