@@ -7,6 +7,7 @@ Page({
     serachType: ["均幅", "胜率"],
     serachTypeValues: ["range", "ratio"],
     serachTypeIndex: 0,
+    searchShow: true,
 
     serachTarge: ["开高", "开闭", "低高", "低闭"],
     serachTargeValues: ["oh", "oc", "lh", "lc"],
@@ -68,9 +69,14 @@ Page({
   },
   requestRange: function (type, targe, date, limit) {
     var url = "https://www.malcolmli.cn:8050/" + type + "/" + targe + "?date=" + date + "&limit=" + limit
-    console.log(url)
+    this.setData({
+      searchShow: false,
+    })
     util.requestPromise(url)
       .then(res => {
+        this.setData({
+          searchShow: true,
+        })
         if (res.data.errorMsg != null) {
           wx.showToast({
             title: res.data.errorMsg,
