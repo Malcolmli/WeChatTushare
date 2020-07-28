@@ -9,7 +9,7 @@
           <navigator
             url="../detail/detail?name={{item.name}}&tsCode={{item.tsCode}}&tsName={{item.tsName}}&netBuy={{item.netBuy}}&count15={{item.count15}}&win15To23={{item.win15To23}}&win15To24={{item.win15To24}}&count30={{item.count30}}&win30To23={{item.win30To23}}&win30To24={{item.win30To24}}"
             class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__bd">{{item.tsName}}</view>
+            <view class="weui-cell__bd">{{item.tsName}}({{item.tsCode}})</view>
             <view class="weui-cell__ft weui-cell__ft_in-access">{{item.win15To23}}</view>
           </navigator>
         </view>
