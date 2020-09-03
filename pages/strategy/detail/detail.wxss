@@ -1,0 +1,4 @@
+/* pages/strategy/detail/detail.wxss */
+.page_align {
+  text-align: right
+}

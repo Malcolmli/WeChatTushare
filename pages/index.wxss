@@ -1,5 +1,1 @@
-/**index.wxss**/
-.search-btn{
-  margin-top: 20px;
-}
-
+/* pages/index.wxss */

@@ -1,8 +1,12 @@
 {
   "pages": [
     "pages/index",
-    "pages/detail/detail",
-    "pages/list/list",
+    "pages/strategy/index",
+    "pages/strategy/list/list",
+    "pages/strategy/detail/detail",
+    "pages/tushare/index",
+    "pages/tushare/list/list",
+    "pages/tushare/detail/detail",
     "pages/logs/logs"
   ],
   "window": {
