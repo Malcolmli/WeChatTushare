@@ -6,6 +6,8 @@ Page({
     name: "",
     start: "",
     end: "",
+    startPrice: "",
+    endPrice: "",
     profits: "",
   },
 
@@ -19,6 +21,8 @@ Page({
       name: options.name,
       start: options.start,
       end: options.end,
+      startPrice: options.startPrice,
+      endPrice: options.endPrice,
       profits: options.profits,
     })
     console.log(this.data.win15To23)
