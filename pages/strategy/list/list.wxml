@@ -1,7 +1,7 @@
 <view class="page" data-weui-theme="{{theme}}">
   <view class="weui-form">
     <view class="weui-form__text-area">
-      <view class="weui-form__desc">{{info1}},{{info2}}</view>
+      <view class="weui-form__desc">{{info1}}，{{info2}}</view>
       <view class="weui-form__desc">{{select}}</view>
     </view>
     <view class="weui-form__control-area">
