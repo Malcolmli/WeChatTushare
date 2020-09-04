@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dateValue: "2020-02-02",
+    dateValue: "2020-01-01",
 
     serachType: ["创业板", "短线", "中线", "长线"],
     serachTypeValues: ["business", "short", "center", "long"],
@@ -25,6 +25,26 @@ Page({
     this.setData({
       serachTypeIndex: e.detail.value
     })
+    if (e.detail.value == 0) {
+      this.setData({
+        dateValue: "2020-01-01"
+      })
+    }
+    if (e.detail.value == 1) {
+      this.setData({
+        dateValue: "2020-01-01"
+      })
+    }
+    if (e.detail.value == 2) {
+      this.setData({
+        dateValue: "2019-01-01"
+      })
+    }
+    if (e.detail.value == 3) {
+      this.setData({
+        dateValue: "2019-01-01"
+      })
+    }
   },
 
   searchbtn: function (e) {
@@ -43,23 +63,13 @@ Page({
         this.setData({
           searchShow: true,
         })
-        var result = res.data
-        console.log(result.id)
-        console.log(result.reportData)
-        console.log(result.historyDetails)
-        // if (res.data.errorMsg != null) {
-        //   wx.showToast({
-        //     title: res.data.errorMsg,
-        //     icon: 'none',
-        //   })
-        // } else {
-          wx.setStorage({
-            key: "listDate",
-            data: res.data
-          })
-          wx.navigateTo({
-            url: "list/list"
-          })
+        wx.setStorage({
+          key: "listDate",
+          data: res.data
+        })
+        wx.navigateTo({
+          url: "list/list"
+        })
         //}
       })
   }
