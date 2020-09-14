@@ -2,8 +2,10 @@ const util = require('../../utils/util.js')
 
 Page({
   data: {
+    limit: 6,
+
     dateValue: util.getDateTime(),
-    
+
     serachType: ["均幅", "胜率"],
     serachTypeValues: ["range", "ratio"],
     serachTypeIndex: 0,
@@ -41,6 +43,16 @@ Page({
     this.setData({
       serachTypeIndex: e.detail.value
     })
+    if (e.detail.value == 0) {
+      this.setData({
+        limit: 6
+      })
+    }
+    if (e.detail.value == 1) {
+      this.setData({
+        limit: 0.8
+      })
+    }
   },
   bindTargeChange: function (e) {
     this.setData({
@@ -48,24 +60,11 @@ Page({
     })
   },
   searchbtn: function (e) {
-    this.selectComponent('#form').validate((valid, errors) => {
-      console.log('valid', valid, errors)
-      if (!valid) {
-        const firstError = Object.keys(errors)
-        if (firstError.length) {
-          wx.showToast({
-            title: errors[firstError[0]].message,
-            icon: 'none',
-          })
-        }
-      } else {
-        var type = this.data.serachTypeValues[this.data.serachTypeIndex]
-        var targe = this.data.serachTargeValues[this.data.serachTargeIndex]
-        var date = util.getDate(new Date(this.data.dateValue));
-        var limit = this.data.formData.limit;
-        this.requestRange(type, targe, date, limit);
-      }
-    })
+    var type = this.data.serachTypeValues[this.data.serachTypeIndex]
+    var targe = this.data.serachTargeValues[this.data.serachTargeIndex]
+    var date = util.getDate(new Date(this.data.dateValue));
+    var limit = this.data.limit;
+    this.requestRange(type, targe, date, limit);
   },
   requestRange: function (type, targe, date, limit) {
     var url = "https://www.malcolmli.cn:8050/" + type + "/" + targe + "?date=" + date + "&limit=" + limit
