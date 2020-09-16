@@ -4,7 +4,7 @@ Page({
   data: {
     limit: 6,
 
-    dateValue: util.getDateTime(),
+    dateValue: "",
 
     serachType: ["均幅", "胜率"],
     serachTypeValues: ["range", "ratio"],
@@ -25,6 +25,14 @@ Page({
     formData: {
 
     },
+  },
+  onReady: function () {
+    var url='https://www.malcolmli.cn:8050/tool/latestData'
+    util.requestPromise(url).then(res => {
+      this.setData({
+        dateValue: res.data
+      })
+    })
   },
   bindDateChange: function (e) {
     this.setData({
