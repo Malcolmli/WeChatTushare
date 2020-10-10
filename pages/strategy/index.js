@@ -9,7 +9,7 @@ Page({
 
     serachType: ["创业板", "短线", "中线", "长线"],
     serachTypeValues: ["business", "short", "center", "long"],
-    serachTypeIndex: 0,
+    serachTypeIndex: 1,
     searchShow: true,
   },
 
