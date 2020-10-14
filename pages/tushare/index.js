@@ -70,12 +70,13 @@ Page({
   searchbtn: function (e) {
     var type = this.data.serachTypeValues[this.data.serachTypeIndex]
     var targe = this.data.serachTargeValues[this.data.serachTargeIndex]
-    var date = util.getDate(new Date(this.data.dateValue));
+    var date = this.data.dateValue.replace(/-/g,'');
     var limit = this.data.limit;
     this.requestRange(type, targe, date, limit);
   },
   requestRange: function (type, targe, date, limit) {
     var url = "https://www.malcolmli.cn:8050/" + type + "/" + targe + "?date=" + date + "&limit=" + limit
+    console.log(url)
     this.setData({
       searchShow: false,
     })

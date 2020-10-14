@@ -29,14 +29,6 @@ const requestPromise = myUrl => {
   })
 }
 
-const getDate = date => {
-  var date = new Date(date);
-  var Str = date.getFullYear() +
-    (date.getMonth() < 9 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) +
-    (date.getDate() < 10 ? "0" + date.getDate() : date.getDate())
-  return Str;
-}
-
 const getDateString = date => {
   var date = new Date(date);
   var Str = date.getFullYear() + "-" +
@@ -55,7 +47,6 @@ const getDateTime = () => {
 
 module.exports = {
   formatTime: formatTime,
-  getDate: getDate,
   getDateString: getDateString,
   getDateTime: getDateTime,
   requestPromise: requestPromise
