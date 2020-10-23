@@ -1,8 +1,0 @@
-/* pages/strategy/list/list.wxss */
-.placeholder{
-  margin: 5px;
-  padding: 0 10px;
-  text-align: center;
-  background-color: var(--weui-BG-1);
-  color: var(--weui-FG-1);
-}
