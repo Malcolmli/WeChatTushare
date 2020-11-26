@@ -27,7 +27,7 @@ Page({
     },
   },
   onReady: function () {
-    var url='https://www.malcolmli.cn:8050/tool/latestData'
+    var url = 'https://www.malcolmli.cn:8050/tool/latestData'
     util.requestPromise(url).then(res => {
       this.setData({
         dateValue: res.data
@@ -70,7 +70,7 @@ Page({
   searchbtn: function (e) {
     var type = this.data.serachTypeValues[this.data.serachTypeIndex]
     var targe = this.data.serachTargeValues[this.data.serachTargeIndex]
-    var date = this.data.dateValue.replace(/-/g,'');
+    var date = this.data.dateValue.replace(/-/g, '');
     var limit = this.data.limit;
     this.requestRange(type, targe, date, limit);
   },
@@ -97,7 +97,7 @@ Page({
             data: res.data.data
           })
           wx.navigateTo({
-            url: "list/list"
+            url: "list/list?type=" + type + "&targe=" + targe + "&date=" + date
           })
         }
       })

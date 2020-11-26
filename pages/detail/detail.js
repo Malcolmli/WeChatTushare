@@ -1,47 +1,30 @@
-// pages/component/detail.js
+const util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    array: [],
+    type: "",
+    targe: "",
+    date: "",
+    code: "",
     name: "",
-    tsCode: "",
-    tsName: "",
-    netBuy: "",
-    count15: "",
-    win15To23: "",
-    win15To24: "",
-    count30: "",
-    win30To23: "",
-    win30To24: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.object)
     this.setData({
+      type: options.type,
+      targe: options.targe,
+      date: options.date,
+      code: options.code,
       name: options.name,
-      tsCode: options.tsCode,
-      tsName: options.tsName,
-      netBuy: options.netBuy,
-      count15: options.count15,
-      win15To23: options.win15To23,
-      win15To24: options.win15To24,
-      count30: options.count30,
-      win30To23: options.win30To23,
-      win30To24: options.win30To24,
     })
-    console.log(this.data.win15To23)
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    this.requestRange(options.type, options.targe, options.date, options.code)
   },
 
   /**
@@ -51,38 +34,28 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  requestRange: function (type, targe, date, code) {
+    var url = "https://www.malcolmli.cn:8050/" + type + "/" + targe + "?date=" + date + "&code=" + code
+    console.log(url)
+    this.setData({
+      searchShow: false,
+    })
+    util.requestPromise(url)
+      .then(res => {
+        this.setData({
+          searchShow: true,
+        })
+        if (res.data.errorMsg != null) {
+          wx.showToast({
+            title: res.data.errorMsg,
+            icon: 'none',
+          })
+        } else {
+          console.log(res.data.data)
+          this.setData({
+            array: res.data.data
+          })
+        }
+      })
   }
 })

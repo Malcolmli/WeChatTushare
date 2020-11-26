@@ -1,43 +1,48 @@
 <view class="page" data-weui-theme="{{theme}}">
   <view class="weui-form">
     <view class="weui-form__text-area">
-      <view class="page__title page_align">{{tsCode}}-{{tsName}}</view>
-      <view class="page__desc page_align">{{name}}</view>
+      <view class="page__title page_align">{{code}}-{{name}}</view>
     </view>
     <view class="weui-form__control-area">
-      <view class="weui-form-preview">
-        <view class="weui-form-preview__hd">
-          <view class="weui-form-preview__item">
-            <em class="weui-form-preview__value">{{netBuy}}</em>
+      <block wx:for="{{array}}" wx:for-item="itme">
+        <view class="weui-form-preview">
+          <view class="weui-form-preview__hd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__value_in-hd">{{itme.name}}</view>
+            </view>
+          </view>
+          <view class="weui-form-preview__bd">
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">净买入</view>
+              <view class="weui-form-preview__value">{{itme.netBuy}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">15天数</view>
+              <view class="weui-form-preview__value">{{itme.count15}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">二到三</view>
+              <view class="weui-form-preview__value">{{itme.win15To23}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label">二到四</label>
+              <text class="weui-form-preview__value">{{itme.win15To24}}</text>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">30天数</view>
+              <view class="weui-form-preview__value">{{itme.count30}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">二到三</view>
+              <view class="weui-form-preview__value">{{itme.win30To23}}</view>
+            </view>
+            <view class="weui-form-preview__item">
+              <view class="weui-form-preview__label">二到四</view>
+              <view class="weui-form-preview__value">{{itme.win30To24}}</view>
+            </view>
           </view>
         </view>
-        <view class="weui-form-preview__bd">
-          <view class="weui-form-preview__item">
-            <label class="weui-form-preview__label">15天数</label>
-            <text class="weui-form-preview__value">{{count15}}</text>
-          </view>
-          <view class="weui-form-preview__item">
-            <label class="weui-form-preview__label">二到三</label>
-            <text class="weui-form-preview__value">{{win15To23}}</text>
-          </view>
-          <view class="weui-form-preview__item">
-            <label class="weui-form-preview__label">二到四</label>
-            <text class="weui-form-preview__value">{{win15To24}}</text>
-          </view>
-          <view class="weui-form-preview__item">
-            <label class="weui-form-preview__label">30天数</label>
-            <text class="weui-form-preview__value">{{count30}}</text>
-          </view>
-          <view class="weui-form-preview__item">
-            <label class="weui-form-preview__label">二到三</label>
-            <text class="weui-form-preview__value">{{win30To23}}</text>
-          </view>
-          <view class="weui-form-preview__item">
-            <label class="weui-form-preview__label">二到四</label>
-            <text class="weui-form-preview__value">{{win30To24}}</text>
-          </view>
-        </view>
-      </view>
+      </block>
     </view>
   </view>
 </view>
