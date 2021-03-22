@@ -39,6 +39,11 @@ Page({
       dateValue: e.detail.value
     })
   },
+  bindLimitChange: function (e) {
+    this.setData({
+      limit: e.detail.value
+    })
+  },
   formInputChange(e) {
     const {
       field
